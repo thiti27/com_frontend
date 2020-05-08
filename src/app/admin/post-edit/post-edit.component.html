@@ -1,0 +1,298 @@
+<title>Daicel Thailand | Edit Post</title>
+<app-header-admin></app-header-admin>
+<div class="card card-cascade">
+    <div class="view view-cascade gradient-card-header blue-gradient">
+        <br>
+        <h4 class="card-header-title mb-3 white-text" style="padding-left: 3%; font-size: 200%;color: white;">Edit
+            Content</h4>
+
+        <div class="row" style="float: right;">
+
+            <a [routerLink]="[ '/post']" class="btn btn-outline-white btn-rounded btn-ml px-2"><i class="fa fa-home"
+                    aria-hidden="true"></i> Back to Admin page</a>
+            <a (click)="previewEN()" class="btn btn-outline-white btn-rounded btn-ml px-2" [queryParams]="{
+                        titleEn: this.titleEn,
+                        detailEn:this.detailEn,
+                        dateActivity:this.dateActivity,
+                        datePublish:this.datePublish,
+                        comNews : this.comNews,
+                        csr : this.csr,
+                        event : this.event,
+                        imgHeader: this.imgHeader,
+                        imgAll: this.imgAll ,
+                        type : 'EN'
+                      }" routerLinkActive="active" target="target" routerLink="/preview-save">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                Preview ENG</a>
+            <a (click)="previewTH()" class="btn btn-outline-white btn-rounded btn-ml px-2" [queryParams]="{
+                    titleTh: this.titleTh,
+                    detailTh:this.detailTh,
+                    dateActivity:this.dateActivity,
+                    datePublish:this.datePublish,
+                    comNews : this.comNews,
+                    csr : this.csr,
+                    event : this.event,
+                    imgHeader: this.imgHeader,
+                    imgAll: this.imgAll ,
+                    type : 'TH'
+                  }" routerLinkActive="active" target="target" routerLink="/th/preview-save">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                Preview TH</a>
+
+            <a class="btn btn-warning btn-round" (click)="save()"><i class="fa fa-save" aria-hidden="true"></i> SAVE
+            </a>
+
+        </div>
+        <br><br>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div [formGroup]="form">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Date & Activity</div>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row" style="padding-left: 3%;">
+                            <div class="col">
+                                <label>Date Activity <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label>Publish Date <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label for="">Select Activity <i class="fa fa-tasks" aria-hidden="true"></i></label>
+            
+            
+                            </div>
+                        </div>
+            
+                        <div class="row" style="padding-left: 3%;">
+                            <div class="col">
+                                <label> <input type="date" style="border: 1px solid gray;
+                                border-radius: 4px;" name="dateActivity" formControlName="dateActivity"
+                                        (change)=setMinDate($event)>
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label> <input type="date" style="border: 1px solid gray;
+                                border-radius: 4px;" name="datePublish" formControlName="datePublish"
+                                        min="{{ minDate | date: 'yyyy-MM-dd'}}">
+                                </label>
+                            </div>
+                            <div class="col">
+            
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="defaultInline1" name="comNews"
+                                        formControlName="comNews">
+                                    <label class="custom-control-label" for="defaultInline1">Company News</label>
+                                </div>
+            
+                                <!-- Default inline 2-->
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="defaultInline2" name="csr"
+                                        formControlName="csr">
+                                    <label class="custom-control-label" for="defaultInline2">CSR</label>
+                                </div>
+            
+                                <!-- Default inline 3-->
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="defaultInline3" name="event"
+                                        formControlName="event">
+                                    <label class="custom-control-label" for="defaultInline3">Event</label>
+                                </div>
+            
+                            </div>
+                        </div>
+
+                        <div class="separator-dashed"></div>
+
+
+                    </div>
+                </div>
+            </div>
+
+       
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Thai Content</div>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="d-flex">
+                            <div class="flex-1 pt-1 ml-2">
+                                <div class="form-group">
+                                    <label for="largeInput">Title</label>
+                                    <input type="text" class="form-control" name="titleTh" formControlName="titleTh">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="separator-dashed"></div>
+
+                        <div class="d-flex">
+                            <div class="flex-1 pt-1 ml-2">
+                                <div class="form-group">
+                                    <label for="comment">Detail</label>
+                                    <textarea class="form-control" rows="10" placeholder="Enter ..." name="detailTh"
+                                        formControlName="detailTh"></textarea>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="separator-dashed"></div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">English Content</div>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="d-flex">
+                            <div class="flex-1 pt-1 ml-2">
+                                <div class="form-group">
+                                    <label for="largeInput">Title</label>
+                                    <input type="text" class="form-control" name="titleEn" formControlName="titleEn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="separator-dashed"></div>
+
+                        <div class="d-flex">
+                            <div class="flex-1 pt-1 ml-2">
+                                <div class="form-group">
+                                    <label for="comment">Detail</label>
+                                    <textarea class="form-control" rows="10" placeholder="Enter ..." name="detailEn"
+                                        formControlName="detailEn"></textarea>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="separator-dashed"></div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Image Header</div>
+                    </div>
+
+                    <div class="card-body pb-0">
+                        <div class="d-flex">
+
+                            <div class="flex-1 pt-1 ml-2">
+                                <div class="form-group">
+                                    <label>File Uploads</label><br>
+                                    <input type="file" (change)="fileHeader($event)" class="custom-file-input"
+                                        accept="image/*" class="btn btn-default">
+                                </div>
+                                <div class="container" style="width: 90%;">
+                                    <div class="row">
+                                        <img [src]="imageSrc" style="width:100%" class="image">
+                                        <button (click)="deleteImg(filename)" style="width: 100%;"
+                                            class="btn btn-danger btn-border"><i class="fa fa-trash"
+                                                aria-hidden="true"></i></button>
+
+                                    </div>
+                                </div>
+                                <br><br>
+                            </div>
+
+                        </div>
+                        <div class="separator-dashed"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">All Image</div>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="form-group">
+                            <label>File Uploads</label><br>
+                            <input type="file" (change)="fileuploads($event)" multiple class="custom-file-input"
+                                style="height: 100%;" accept="image/*" class="btn btn-default">
+                        </div>
+                        <div class="row">
+                            <div class="column" *ngFor="let image of images">
+                                <div class="container">
+                                    <img [src]="image.url" style="width:100%" class="image">
+                                    <div class="middle">
+                                        <a href="javascript:void(0)" (click)="deleteImage(image)" class="text"><i
+                                                class="fa fa-trash" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<!--   Core JS Files   -->
+<script src="../../../assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="../../../assets/js/core/popper.min.js"></script>
+<script src="../../../assets/js/core/bootstrap.min.js"></script>
+
+<!-- jQuery UI -->
+<script src="../../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="../../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="../../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+
+<!-- Datatables -->
+<script src="../../../assets/js/plugin/datatables/datatables.min.js"></script>
+
+<!-- Bootstrap Notify -->
+<script src="../../../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+<!-- jQuery Vector Maps -->
+<script src="../../../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+<script src="../../../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+
+<!-- Atlantis JS -->
+<script src="../../../assets/js/atlantis.min.js"></script>

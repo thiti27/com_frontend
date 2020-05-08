@@ -1,0 +1,45 @@
+<div class="wrapper fadeInDown">
+	<div id="formContent">
+		<h2 class="active"> ADMIN LOGIN</h2>
+		<div class="fadeIn first">
+			<img src="../assets/templates/home/DSST-DSTT-Logo-300x70.png" id="icon" alt="User Icon" />
+		</div>
+		<br>
+		<!-- <form #loginForm="ngForm" (submit)="onClickSubmit(loginForm.value)">
+			<input ngModel name="username" type="text" id="login" class="fadeIn second" placeholder="username">
+
+			<input ngModel name="password" type="password" id="password" class="fadeIn third" placeholder="password">
+			<br>
+			<input type="submit" class="fadeIn fourth" value="Log In">
+
+			<div *ngIf="isError" class="row" style="text-align: center; color :red;margin-bottom: 8px; padding-left: 25%;">
+				Error! Username or Password Incorrect
+			</div>
+
+		</form> -->
+
+		<form id="login-form" (ngSubmit)="loginForm.form.valid && loginSubmit()" #loginForm="ngForm" novalidate>
+			<input type="text" name="username" class="fadeIn second" placeholder="Username" autocomplete="username"
+				[(ngModel)]="login.username" #username="ngModel"
+				[ngClass]="{ 'is-invalid': (username.errors && !loginValid) || (username.errors && username.touched) }"
+				required>
+
+
+			<input type="password" name="password" class="fadeIn third" placeholder="Password"
+				autocomplete="current-password" [(ngModel)]="login.password" #password="ngModel"
+				[ngClass]="{ 'is-invalid': (password.errors && !loginValid) || (password.errors && password.touched) }"
+				required>
+
+			<br>
+			<input type="submit" class="fadeIn fourth" form="login-form" [disabled]="loginForm.form.invalid"
+				value="LOGIN">
+
+		</form>
+
+
+		<div id="formFooter">
+
+		</div>
+
+	</div>
+</div>

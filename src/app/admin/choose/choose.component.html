@@ -1,0 +1,137 @@
+
+<title>Daicel Thailand | Admin</title>
+
+<app-header-admin></app-header-admin>
+<div class="card card-cascade">
+    <div class="view view-cascade gradient-card-header blue-gradient">
+        <br>
+        <h4 class="card-header-title mb-3 white-text" style="padding-left: 3%; font-size: 200%;color: white;">
+            Choose {{content}}</h4>
+   
+     
+        <br><br>
+    </div>
+</div>
+<!--/.Navbar-->
+<div class="container-fluid">
+
+   <br>
+    <section class="mb-5">
+        <!-- Card -->
+        <div class="card card-cascade narrower">
+            <br>
+            <!-- Section: Table -->
+            <div class="row" style="padding-left: 60%;">
+                    <div class="col">
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i> :&nbsp; <input type="date" (change)=searchDB($event) style="border: 1px solid gray;
+                        border-radius: 4px;">
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label> <i class="fa fa-search" aria-hidden="true"></i> :&nbsp;
+                            <input type="search" name="search" style=" border: 1px solid gray;
+                    border-radius: 4px;" (keyup)="onSearch($event.target.value)" class="" placeholder=" search"
+                                aria-controls="add-row"></label>
+                    </div>
+                  
+            </div>
+            <br>
+            <section>
+                <div class="card card-cascade narrower z-depth-0">
+
+                    <div
+                        class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+                        <h1 class="white-text mx-3" style="padding-left: 40%;">Content</h1>
+
+                        <div>
+
+                           
+               
+                        </div>
+
+                    </div>
+
+                    <div class="px-4">
+
+                        <div class="table-responsive">
+
+                            <!--Table-->
+                            <table class="table table-hover mb-0">
+
+                                <!-- Table head -->
+                                <thead>
+                                    <tr>
+
+                                        <th style="text-align: center;">ID</th>
+                                        <th style="text-align: center;">Title TH </th>
+                                        <th style="text-align: center;">Title EN </th>
+                                        <th style="text-align: center;">post by</th>
+                                        <th style="text-align: center;">post date</th>
+                                        <th style="text-align: center;">publish date </th>
+                                        <th style="width: 180px !important;text-align: center;">
+                                            Select</th>
+
+                                    </tr>
+                                </thead>
+                                <!-- Table head -->
+
+                                <!-- Table body -->
+                                <tbody>
+                                    <tr *ngFor="let item of mDataArray">
+                                        <td>{{item.event_id}}</td>
+                                        <td>{{item.event_name_th}}</td>
+                                        <td>{{item.event_name_en}}</td>
+                                        <td>{{item.post_by}}</td>
+                                        <td>{{item.post_date | date: 'dd/MM/yyyy'  }}</td>
+                                        <td>{{item.published_date | date: 'dd/MM/yyyy' }}</td>
+                                        <div *ngIf="item.active == 2">
+                                            <td style="text-align: center;">
+                                                <button type="button" data-toggle="tooltip"
+                                                    title=""
+                                                    class="btn btn-link btn-success btn-lg"
+                                                    data-original-title="Edit Task">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                            </td>
+
+                                        </div>
+                                        <div *ngIf="item.active == 1">
+                                            <td style="text-align: center;">
+                                                <button (click)="editItem(item.event_id,type)"
+                                                    type="button" data-toggle="tooltip" title=""
+                                                    class="btn btn-primary btn-round "
+                                                    data-original-title="Edit Task">
+
+                                                    Choose</button>
+                                            </td>
+                                        </div>
+                                    </tr>
+
+                                </tbody>
+                                <!-- Table body -->
+                                <br>
+                            </table>
+                            <!-- Table -->
+
+                        </div>
+
+                        <hr class="my-0">
+
+
+
+                    </div>
+
+                </div>
+
+            </section>
+            <!--Section: Table-->
+
+        </div>
+        <!-- Card -->
+
+    </section>
+    <!-- Section: Main panel -->
+
+
+</div>
+

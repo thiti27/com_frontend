@@ -1,0 +1,196 @@
+<title>Daicel Thailand | Choose Main Content</title>
+<app-header-admin></app-header-admin>
+<div class="card card-cascade">
+    <div class="view view-cascade gradient-card-header blue-gradient">
+        <br>
+        <h2 class="card-header-title mb-3 white-text" style="padding-left: 3%;">Choose Main Content</h2>
+        <br><br>
+    </div>
+</div>
+<div class="container-fluid">
+<br>
+    <section class="mb-5">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+
+                <!-- Panel -->
+                <div class="card">
+
+                    <div class="card-header white-text primary-color">
+                       <h4 style="color: white;">Company News</h4> 
+                    </div>
+
+                    <div class="card-body text-center px-4 mb-3">
+
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay">
+                            <img class="card-img-top" [src]="com_img">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center">
+                            <!-- Subtitle -->
+                            <a (click)="editItem(com_id)">
+                                <h6 class="font-weight-bold indigo-text py-2">
+                                    {{com_news}} <i class="fa fa-edit"></i>
+
+                                </h6>
+                            </a>
+                            <!-- Text -->
+                            <p class="card-text" style="overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                line-height: 25px;   
+                                max-height: 100px;     
+                                -webkit-line-clamp: 2; /* number of lines to show */
+                                -webkit-box-orient: vertical;
+                                height: 50px;">{{com_news_detail}}
+                            </p>
+                            <a [routerLink]="['/choose']" [queryParams]="{type : 'com_news'}"
+                                class="btn btn-secondary btn-rounded">Choose</a>
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- Card footer -->
+                    <div class="card-footer text-muted text-center">
+                        <i class="fa fa-calendar" aria-hidden="true"></i> Publish Date ..
+                        {{com_date | date: 'dd/MM/yyyy'   }}
+                    </div>
+
+
+                </div>
+                <!-- Panel -->
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+
+                <!-- Panel -->
+                <div class="card">
+
+                    <div class="card-header white-text primary-color">
+                        <h4 style="color: white;"> Company CSR</h4> 
+                       
+                    </div>
+
+                    <div class="card-body text-center px-4 mb-3">
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay">
+                            <img class="card-img-top" [src]="csr_img" >
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center">
+                            <a (click)="editItem(csr_id)">
+                                <h6 class="font-weight-bold indigo-text py-2">
+                                    {{csr}} <i class="fa fa-edit"></i>
+
+                                </h6>
+                            </a>
+                            <!-- Text -->
+                            <p class="card-text" style="overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    line-height: 25px;   
+                    max-height: 100px;     
+                    -webkit-line-clamp: 2; /* number of lines to show */
+                    -webkit-box-orient: vertical;
+                    height: 50px;">{{csr_detail}}
+                            </p>
+                            <a [routerLink]="['/choose']" [queryParams]="{type : 'csr'}"
+                                class="btn btn-secondary btn-rounded">Choose</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card footer -->
+                    <div class="card-footer text-muted text-center">
+                        <i class="fa fa-calendar" aria-hidden="true"></i> Publish Date ..
+                        {{csr_date  | date: 'dd/MM/yyyy'   }}
+                    </div>
+                </div>
+                <!-- Panel -->
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-0">
+
+                <!-- Panel -->
+                <div class="card">
+
+                    <div class="card-header white-text primary-color">
+                        <h4 style="color: white;"> Company Events</h4> 
+                    
+                    </div>
+
+                    <div class="card-body text-center px-4 mb-3">
+
+                        <div class="view view-cascade overlay">
+                            <img class="card-img-top" [src]="events_img" >
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center">
+
+                            <a (click)="editItem(events_id)">
+                                <h6 class="font-weight-bold indigo-text py-2">
+                                    {{events}} <i class="fa fa-edit"></i>
+
+                                </h6>
+                            </a>
+                            <!-- Text -->
+                            <p class="card-text" style="overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            line-height: 25px;   
+                            max-height: 100px;     
+                            -webkit-line-clamp: 2; /* number of lines to show */
+                            -webkit-box-orient: vertical;
+                            height: 50px;">{{events_detail}}
+                            </p>
+                            <a [routerLink]="['/choose']" [queryParams]="{type : 'events'}"
+                                class="btn btn-secondary btn-rounded">Choose</a>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <!-- Card footer -->
+                    <div class="card-footer text-muted text-center">
+                        Publish Date ..
+                        {{events_date | date: 'dd/MM/yyyy'   }}
+                    </div>
+
+                </div>
+                <!-- Panel -->
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </section>
+</div>
